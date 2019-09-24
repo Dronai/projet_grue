@@ -8,5 +8,4 @@ public class projet_grue {
 		
 		System.out.println("Hello");
 	}
-
 }
