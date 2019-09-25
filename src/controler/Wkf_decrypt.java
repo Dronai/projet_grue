@@ -2,15 +2,19 @@ package controler;
 
 import java.util.ArrayList;
 
+import modele.CAD;
 import modele.Decrypt;
 import modele.Files;
 import modele.Map_Dic;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class Wkf_decrypt {
 
 	Files files = new Files();
 	Decrypt decrypt = new Decrypt();
 	Map_Dic map_dic = new Map_Dic();
+	CAD cad = new CAD("jdbc:mysql://localhost:3306/projet_grue?useSSL=false", "root", "");
 	String code;
 	String[] word;
 	String texte;
@@ -44,6 +48,8 @@ public class Wkf_decrypt {
 
 		// Get data
 		this.code = this.readFiles(sourcepath);
+		//set the dictionary of word
+		map_dic.setWordtab(this.tabWord());
 
 		int i = 0;
 		do {
@@ -115,7 +121,26 @@ public class Wkf_decrypt {
 		}
 		return texte;
 	}
-
+	
+	public ArrayList<String> tabWord() {
+		ArrayList<String> tab = new ArrayList<String>();
+		String rq_sql;
+		ResultSet result;
+		
+		rq_sql = map_dic.selectWord();
+		result = cad.GetRows(rq_sql);
+		
+		try {
+			while (result.next()) {
+				tab.add(result.getString("word"));
+            }
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return tab;
+	}
+	
 	public String getCode() {
 		return code;
 	}
