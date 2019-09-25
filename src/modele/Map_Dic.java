@@ -5,17 +5,15 @@ import java.util.ArrayList;
 public class Map_Dic {
 
 	ArrayList<String> wordtab = new ArrayList<String>();
+	String rq_sql;
 	
 	//Make map => call request. With result -> create array.
 	public Map_Dic() {
-		wordtab.add("j'aimes");
-		wordtab.add("poire et chocolat");
-		wordtab.add("j'en mangé des pömmes");
-		wordtab.add("banane");
-		wordtab.add("elephant");
-		wordtab.add("ours");
-		wordtab.add("J'aime manger les pommes");
-		wordtab.add("manger");
+	}
+
+	public String selectWord( ) {
+		rq_sql = "SELECT * FROM tb_word";
+		return rq_sql;
 	}
 	
 	public boolean compare(String word) {
@@ -26,5 +24,21 @@ public class Map_Dic {
 			}
 		}
 		return false;
+	}
+	
+	public ArrayList<String> getWordtab() {
+		return wordtab;
+	}
+
+	public void setWordtab(ArrayList<String> wordtab) {
+		this.wordtab = wordtab;
+	}
+
+	public String getRq_sql() {
+		return rq_sql;
+	}
+
+	public void setRq_sql(String rq_sql) {
+		this.rq_sql = rq_sql;
 	}
 }
