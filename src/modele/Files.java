@@ -18,7 +18,7 @@ public class Files {
 		while((i=fr.read())!=-1) {
 			texte += (char)i;
 		}
-		
+		fr.close();
 		return texte;
 	}
 	
