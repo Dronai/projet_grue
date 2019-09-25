@@ -7,13 +7,25 @@ public class Decrypt {
 
     public Decrypt() { }
 
-    public String xor_encodeToString(byte[] a, byte[] key) {
+     /**
+      * 
+      * @param a byte[]
+      * @param key byte[]
+      * @return {@link String}
+      */
+      public String xor_encodeToString(byte[] a, byte[] key) {
         ArrayList<Byte> listBuffer = xor_encode(a, key);
         byte[] arrayBuffer = listToArrayOfByte(listBuffer);
         String output = this.ByteArrayToCharset(arrayBuffer);
         return output;
     }
 
+     /**
+      * 
+      * @param a byte[]
+      * @param key byte[]
+      * @return {@link String}
+      */
     public String xor_encodeToString(byte[] a, byte[] key, String encoder ){
         ArrayList<Byte> listBuffer = xor_encode(a, key);
         byte[] arrayBuffer = listToArrayOfByte(listBuffer);
@@ -21,6 +33,12 @@ public class Decrypt {
         return output;
     }
 
+     /**
+      * 
+      * @param a {@link String}
+      * @param key {@link String}
+      * @return {@link String}
+      */
     public String xor_encodeToString(String a, String key) {
         ArrayList<Byte> listBuffer = xor_encode(a, key);
         byte[] arrayBuffer = listToArrayOfByte(listBuffer);
@@ -28,12 +46,19 @@ public class Decrypt {
         return output;
     }
 
+     /**
+      * 
+      * @param a {@link String}
+      * @param key {@link String}
+      * @return {@link String}
+      */
     public String xor_encodeToString(String a, String key, String encoder ) {
         ArrayList<Byte> listBuffer = xor_encode(a, key);
         byte[] arrayBuffer = listToArrayOfByte(listBuffer);
         String output = this.ByteArrayToCharset(arrayBuffer, encoder);
         return output;
     }
+
 
     /**
      * Function that return a list thanks to a xor function between 
