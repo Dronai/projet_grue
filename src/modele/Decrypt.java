@@ -7,6 +7,34 @@ public class Decrypt {
 
     public Decrypt() { }
 
+    public String xor_encodeToString(byte[] a, byte[] key) {
+        ArrayList<Byte> listBuffer = xor_encode(a, key);
+        byte[] arrayBuffer = listToArrayOfByte(listBuffer);
+        String output = this.ByteArrayToCharset(arrayBuffer);
+        return output;
+    }
+
+    public String xor_encodeToString(byte[] a, byte[] key, String encoder ){
+        ArrayList<Byte> listBuffer = xor_encode(a, key);
+        byte[] arrayBuffer = listToArrayOfByte(listBuffer);
+        String output = this.ByteArrayToCharset(arrayBuffer, encoder);
+        return output;
+    }
+
+    public String xor_encodeToString(String a, String key) {
+        ArrayList<Byte> listBuffer = xor_encode(a, key);
+        byte[] arrayBuffer = listToArrayOfByte(listBuffer);
+        String output = this.ByteArrayToCharset(arrayBuffer);
+        return output;
+    }
+
+    public String xor_encodeToString(String a, String key, String encoder ) {
+        ArrayList<Byte> listBuffer = xor_encode(a, key);
+        byte[] arrayBuffer = listToArrayOfByte(listBuffer);
+        String output = this.ByteArrayToCharset(arrayBuffer, encoder);
+        return output;
+    }
+
     /**
      * Function that return a list thanks to a xor function between 
      * the "a" array of bytes and the "key" array of bytes
@@ -14,7 +42,7 @@ public class Decrypt {
      * @param key byte[]
      * @return Return a List of Byte that is the result of the Xor function
      */
-    protected ArrayList<Byte> xor_encode(byte[] a, byte[] key) {
+    public ArrayList<Byte> xor_encode(byte[] a, byte[] key) {
         ArrayList<Byte> outArray = new ArrayList<Byte>(a.length);
         int pos = 0;
 
@@ -25,14 +53,14 @@ public class Decrypt {
         return outArray;
     }
 
-        /**
+    /**
      * Function that return a list thanks to a xor function 
      * between the String "a" and the String "key" 
      * @param a String
      * @param key String
      * @return a List of Byte that is the result of the Xor function
      */
-    protected ArrayList<Byte> xor_encode(String a, String key) {
+    public ArrayList<Byte> xor_encode(String a, String key) {
         a = a.toUpperCase();
         byte[] input = a.getBytes();
         byte[] keypass = key.getBytes();
@@ -47,7 +75,7 @@ public class Decrypt {
      * @param list ArrayList<Byte>
      * @return an Array of byte
      */
-    protected byte[] listToArrayOfByte(ArrayList<Byte> list) {
+    public byte[] listToArrayOfByte(ArrayList<Byte> list) {
         byte[] res = new byte[list.size()];     
         for (int i = 0; i < list.size(); i++) {
             // define an "item to manipulate"
@@ -62,7 +90,7 @@ public class Decrypt {
      * @param input byte[]
      * @return String
      */
-    protected String ByteArrayToCharset(byte[] input) {
+    public String ByteArrayToCharset(byte[] input) {
         return new String(input, Charset.defaultCharset());
     }
     
@@ -71,8 +99,15 @@ public class Decrypt {
      * @param input byte[]
      * @return String
      */
-    protected String ByteArrayToCharset(byte[] input, String enc) {
+    public String ByteArrayToCharset(byte[] input, String enc) {
         return new String(input, Charset.forName(enc));
+    }
+
+    public String[] getListOfUniqueWord(String text) {
+        
+        String regex = "([^a-zA-Z']+)'*\\1*";
+        String[] n_words = text.split(regex);
+        return n_words;
     }
 
 }
