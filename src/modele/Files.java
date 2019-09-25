@@ -9,6 +9,9 @@ public class Files {
 		
 	}
 	
+	/*
+	 * read a file
+	 */
 	public String getData(String path) throws Exception {
 		
 		FileReader fr = new FileReader(path);
@@ -22,6 +25,9 @@ public class Files {
 		return texte;
 	}
 	
+	/*
+	 * Write in a file
+	 */
 	public void setData(String path, String texte) {
 		try {
 			FileWriter fw = new FileWriter(path);
