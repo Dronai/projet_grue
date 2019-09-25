@@ -1,8 +1,6 @@
 package view;
 
-import controler.Wkf_decrypt;
-
-public class projet_grue {
+public class Projet_Grue {
 
 	public static void main(String[] args) {
 		

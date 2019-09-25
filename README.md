@@ -1,6 +1,5 @@
 # projet_grue
 
-Ce projet permet de décrypter un fichier crypté avec la méthode XOR
-Il est réalisé au cours d'un formation au CESI
+Projet de grue en carton, séminaire scientifique 2019, CESI Exia
 
-Projet en Java
+Réalisé en java cette application permet de décrypter un code chiffré avec la méthode XOR.
