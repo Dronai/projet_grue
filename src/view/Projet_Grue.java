@@ -1,11 +1,15 @@
 package view;
 
+import javax.swing.JFrame;
+
 import controler.Wkf_cpte;
 import controler.Wkf_decrypt;
 
 public class Projet_Grue {
 
 	public static void main(String[] args) {
+		
+		JFrame frame = new Frm_auth();
 		
 		Boolean bool;
 		Wkf_cpte cpte = new Wkf_cpte();
