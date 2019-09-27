@@ -56,12 +56,13 @@ public class Frm_auth extends JFrame implements ActionListener{
 		this.verify = cpte.pcs_authentifier(this.login, this.password);
 		
 		if(this.verify == true) {
-			this.labelError.setText("Perfect man ! Let's go play !");
+			this.labelError.setText("Succefull login");
+			this.setVisible(false);
+			Frm_decrypt frm_decrypt = new Frm_decrypt();
+			System.out.println("Successful login");
 		}else {
 			this.labelError.setText("Le login ou password n'est pas correct !");
-		}
-		System.out.println(arg0);
-		
-		
+			System.out.println("Connection failed");
+		}		
 	}
 }

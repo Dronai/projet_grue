@@ -4,10 +4,7 @@ import java.awt.Dimension;
 import java.awt.event.*;
 import java.io.File;
 import java.io.IOException;
-
 import javax.swing.*;
-import javax.swing.filechooser.FileNameExtensionFilter;
-
 import controler.Wkf_decrypt;
 
 public class Frm_decrypt extends JFrame implements ActionListener {
@@ -24,7 +21,6 @@ public class Frm_decrypt extends JFrame implements ActionListener {
 	JButton buttonDecrypt = new JButton("Decrypter");
 	JLabel labelDecryptMessage = new JLabel();
 	
-	Wkf_decrypt wkf_decrypt = new Wkf_decrypt("awqazertyui");
 	String sourcePath;
 	String destinationPath;
 	String key;
@@ -92,9 +88,11 @@ public class Frm_decrypt extends JFrame implements ActionListener {
 			Wkf_decrypt wkf_decrypt = new Wkf_decrypt(this.key);
 
 			if(wkf_decrypt.pcs_decrypter(this.sourcePath, this.destinationPath)) {
-				this.labelDecryptMessage.setText("Le message a était décodé avec succès ! \n La clé est : " + wkf_decrypt.getKey() + "\n Le message est : " + wkf_decrypt.getTexte());
+				this.labelDecryptMessage.setText("Le message a était décodé avec succès ! La clé est : " + wkf_decrypt.getKey() + " Le message est : " + wkf_decrypt.getTexte());
+				System.out.println("Message decoded "+  "Key : " + wkf_decrypt.getKey() + "\n Message : " + wkf_decrypt.getTexte());
 			}else {
 				this.labelDecryptMessage.setText("Le message n'a pas était décodé ! :(");
+				System.out.println("Message not decoded");
 			}
 		}
 	}
