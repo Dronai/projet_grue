@@ -22,6 +22,7 @@ public class Wkf_decrypt {
 	int knowNumberCharacter;
 	String key;
 	Boolean check;
+	Boolean check2;
 	ArrayList<Character> keytab = new ArrayList<Character>();
 
 	// Constructor
@@ -64,9 +65,10 @@ public class Wkf_decrypt {
 
 			// Check if key is correct. Skip the word with accent
 			this.check = map_dic.compare(this.word[0]);
+			this.check2 = map_dic.compare(this.word[this.word.length-1]);
 			
 			//If word doesn't matches, increment key
-			if (this.check == false) {
+			if (this.check == false || this.check2 == false) {
 				this.keytab = increment(this.keytab, this.keytab.size() - 1, this.keytab.get(this.keytab.size() - 1));
 				this.key = this.knowKey;
 				for (int y = 0; y < this.keytab.size(); y++) {
@@ -75,10 +77,10 @@ public class Wkf_decrypt {
 			}
 			i++;
 			System.out.println("Iteration: " + i + ", key tested : " + this.key + ", text found : " + this.texte);
-		} while (i < (Math.pow(26.0, (12 - this.knowNumberCharacter))) && this.check == false);
+		} while (i < (Math.pow(26.0, (12 - this.knowNumberCharacter))) && (this.check == false || this.check2 == false));
 
 		//If matches : write the message in file.
-		if (this.check == true) {
+		if (this.check == true && this.check2 == true) {
 			System.out.println("Message found !");
 			// Write text in new file
 			this.writeFiles(destination_path, this.texte);
