@@ -17,7 +17,7 @@ public class Map_Dic {
 	}
 	
 	public boolean compare(String word) {
-				
+		System.out.println("Word tested : " + word);
 		for(int i=0; i<wordtab.size(); i++) {
 			if(wordtab.get(i).equals(word)) {
 				return true;

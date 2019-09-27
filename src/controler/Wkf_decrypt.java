@@ -39,6 +39,8 @@ public class Wkf_decrypt {
 		for (int y = 0; y < this.keytab.size(); y++) {
 			this.key += this.keytab.get(y);
 		}
+		
+		System.out.println("Initial key : " + this.key);
 	}
 
 	/*
@@ -72,16 +74,19 @@ public class Wkf_decrypt {
 				}
 			}
 			i++;
-			
+			System.out.println("Iteration: " + i + ", key tested : " + this.key + ", text found : " + this.texte);
 		} while (i < (Math.pow(26.0, (12 - this.knowNumberCharacter))) && this.check == false);
 
 		//If matches : write the message in file.
 		if (this.check == true) {
+			System.out.println("Message found !");
 			// Write text in new file
 			this.writeFiles(destination_path, this.texte);
+			System.out.println("Texte write in file : " + destination_path);
 			return true;
 		}
 
+		System.out.println("Message not found");
 		return false;
 
 	}

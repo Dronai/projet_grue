@@ -25,7 +25,7 @@ public class Wkf_cpte {
 			while (result.next()) {
 				
 				if(result.getString(1) != null) {
-	    			System.out.println(result.getString(1));
+	    			System.out.println("Row found !");
 					return true;
 				}else {
 					return false;
@@ -34,6 +34,7 @@ public class Wkf_cpte {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		System.out.println("No row found !");
 		return false;
 	}
 }
