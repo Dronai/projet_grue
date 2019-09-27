@@ -9,8 +9,9 @@ public class Projet_Grue {
 
 	public static void main(String[] args) {
 		
-		JFrame frame = new Frm_auth();
-		
+		JFrame frame = new Frm_decrypt();
+		//JFrame frame = new Frm_auth();
+
 		Boolean bool;
 		Wkf_cpte cpte = new Wkf_cpte();
 		
