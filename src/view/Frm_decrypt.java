@@ -9,7 +9,27 @@ import controler.Wkf_decrypt;
 
 public class Frm_decrypt extends JFrame implements ActionListener {
 
-	JPanel panneau = new JPanel();
+	String sourcePath;
+	String destinationPath;
+	String key;
+	
+	JPanel Mainpanneau = new JPanel();
+	JPanel SubPanel1 = new JPanel();
+	JPanel SubPanel2 = new JPanel();
+	JPanel SubPanel3 = new JPanel();
+	JPanel SubPanel4 = new JPanel();
+	JPanel SubPanel5 = new JPanel();
+	JPanel SubPanel6 = new JPanel();
+	JPanel SubPanel7 = new JPanel();
+	JPanel SubPanel8 = new JPanel();
+	JPanel SubPanel9 = new JPanel();
+	JPanel SubPanel10 = new JPanel();
+	JPanel SubPanel11 = new JPanel();
+	JPanel SubPanel12 = new JPanel();
+	JPanel SubPanel13 = new JPanel();
+	JPanel SubPanel14 = new JPanel();
+	JPanel SubPanel15 = new JPanel();
+	
 	JLabel labelSource = new JLabel("Selectionner le fichier texte source");
 	JLabel labeldestination = new JLabel("Selectionner le fichier texte de destination");	
 	JLabel pathSource = new JLabel();
@@ -20,10 +40,6 @@ public class Frm_decrypt extends JFrame implements ActionListener {
 	JTextField keyField = new JTextField();
 	JButton buttonDecrypt = new JButton("Decrypter");
 	JLabel labelDecryptMessage = new JLabel();
-	
-	String sourcePath;
-	String destinationPath;
-	String key;
 	
 	public Frm_decrypt() {
 		super("Application de décryptage");
@@ -39,18 +55,49 @@ public class Frm_decrypt extends JFrame implements ActionListener {
 		buttonDestination.addActionListener(this);
 		buttonDecrypt.addActionListener(this);
 		keyField.setPreferredSize(new Dimension(100, 20));
-		panneau.add(labelSource);
-		panneau.add(buttonSource);
-		panneau.add(pathSource);
-		panneau.add(labeldestination);
-		panneau.add(buttonDestination);
-		panneau.add(pathdestination);
-		panneau.add(keyLabel);
-		panneau.add(keyField);
-		panneau.add(buttonDecrypt);
-		panneau.add(labelDecryptMessage);
-		setContentPane(panneau);
-		setSize(700, 500);
+		
+		BoxLayout layout = new BoxLayout(Mainpanneau, BoxLayout.X_AXIS);
+		BoxLayout layoutSub1 = new BoxLayout(SubPanel4, BoxLayout.Y_AXIS);
+		BoxLayout layoutSub2 = new BoxLayout(SubPanel13, BoxLayout.Y_AXIS);
+		BoxLayout layoutSub3 = new BoxLayout(SubPanel8, BoxLayout.Y_AXIS);
+		
+		Mainpanneau.setLayout(layout);
+		SubPanel4.setLayout(layoutSub1);
+		SubPanel13.setLayout(layoutSub2);
+		SubPanel8.setLayout(layoutSub3);
+		
+		
+		SubPanel1.add(labelSource);
+		SubPanel2.add(buttonSource);
+		SubPanel3.add(pathSource);
+		SubPanel4.add(SubPanel1);
+		SubPanel4.add(SubPanel2);
+		SubPanel4.add(SubPanel3);
+		
+		SubPanel5.add(labeldestination);
+		SubPanel6.add(buttonDestination);
+		SubPanel7.add(pathdestination);
+		SubPanel8.add(SubPanel5);
+		SubPanel8.add(SubPanel6);
+		SubPanel8.add(SubPanel7);
+		
+		SubPanel9.add(keyLabel);
+		SubPanel10.add(keyField);
+		SubPanel11.add(buttonDecrypt);
+		SubPanel12.add(labelDecryptMessage);
+		SubPanel13.add(SubPanel9);
+		SubPanel13.add(SubPanel10);
+		SubPanel13.add(SubPanel11);
+		SubPanel13.add(SubPanel12);
+		
+		Mainpanneau.add(SubPanel4);
+		Mainpanneau.add(SubPanel13);
+		Mainpanneau.add(SubPanel8);
+
+		
+		setContentPane(Mainpanneau);
+		setResizable(false);
+		setSize(900, 225);
 		setVisible(true);
 	}
 
@@ -61,7 +108,7 @@ public class Frm_decrypt extends JFrame implements ActionListener {
 			 String filename = File.separator+"tmp";
 		        JFileChooser fileChooser = new JFileChooser(new File(filename));
 		        // pop up an "Open File" file chooser dialog
-		        fileChooser.showOpenDialog(panneau);
+		        fileChooser.showOpenDialog(Mainpanneau);
 		        this.sourcePath = fileChooser.getSelectedFile().getAbsolutePath();
 		        this.pathSource.setText(this.sourcePath);
 		        System.out.println("File to open: " + fileChooser.getSelectedFile());
@@ -70,7 +117,7 @@ public class Frm_decrypt extends JFrame implements ActionListener {
 			String filename = File.separator+"tmp";
 	        JFileChooser fileChooser = new JFileChooser(new File(filename));
 	        // pop up an "Save File" file chooser dialog
-	        fileChooser.showSaveDialog(panneau);
+	        fileChooser.showSaveDialog(Mainpanneau);
 	        
 	        File file = new File(fileChooser.getSelectedFile().getAbsolutePath() + ".txt");
 	        try {
