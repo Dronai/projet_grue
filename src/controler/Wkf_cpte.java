@@ -17,8 +17,13 @@ public class Wkf_cpte {
 		
 	}
 	
-	public Boolean pcs_authentifier(String user_login, String user_password) {
-		rq_sql = map_p.selectIDbyLoginPassword(user_login, user_password);
+	public Boolean pcs_authentifier(String user_login, char[] password) {
+		String pass = "";
+
+		for(int i=0; i<password.length; i++) {
+			pass += password[i];
+		}
+		rq_sql = map_p.selectIDbyLoginPassword(user_login, pass);
 		result = cad.GetRows(rq_sql);
 		
 		try {

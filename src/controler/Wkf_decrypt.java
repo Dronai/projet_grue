@@ -22,6 +22,11 @@ public class Wkf_decrypt {
 	int knowNumberCharacter;
 	String key;
 	Boolean check;
+	Boolean check2;
+	Boolean check3;
+	Boolean check4;
+	Boolean check5;
+
 	ArrayList<Character> keytab = new ArrayList<Character>();
 
 	// Constructor
@@ -64,9 +69,18 @@ public class Wkf_decrypt {
 
 			// Check if key is correct. Skip the word with accent
 			this.check = map_dic.compare(this.word[0]);
+			this.check2 = map_dic.compare(this.word[1]);
+			this.check3 = map_dic.compare(this.word[2]);
+			this.check4 = map_dic.compare(this.word[3]);
+			this.check5 = map_dic.compare(this.word[4]);
+
+			
+			System.out.println(this.word[0] + " " + this.word[1] + this.word[2]+ this.word[3]+ this.word[4]);
+
+
 			
 			//If word doesn't matches, increment key
-			if (this.check == false) {
+			if (this.check == false || this.check2 == false || this.check3 == false || this.check4 == false || this.check5 == false) {
 				this.keytab = increment(this.keytab, this.keytab.size() - 1, this.keytab.get(this.keytab.size() - 1));
 				this.key = this.knowKey;
 				for (int y = 0; y < this.keytab.size(); y++) {
@@ -74,11 +88,11 @@ public class Wkf_decrypt {
 				}
 			}
 			i++;
-			System.out.println("Iteration: " + i + ", key tested : " + this.key + ", text found : " + this.texte);
-		} while (i < (Math.pow(26.0, (12 - this.knowNumberCharacter))) && this.check == false);
+			System.out.println("Iteration: " + i + ", key tested : " + this.key + " check 1 : " + this.check + ", check 2 : " + this.check2 + ", text found : " + this.texte);
+		} while (i < (Math.pow(26.0, (12 - this.knowNumberCharacter))) && (this.check == false || this.check2 == false || this.check3 == false || this.check4 == false || this.check5 == false));
 
 		//If matches : write the message in file.
-		if (this.check == true) {
+		if (this.check == true && this.check2 == true && this.check3 == true && this.check4 == true && this.check5 == true) {
 			System.out.println("Message found !");
 			// Write text in new file
 			this.writeFiles(destination_path, this.texte);
